@@ -8,7 +8,7 @@ const showLogin = ref(true)
 
 <template>
   <main>
-    <div class="heading">
+    <div class="container">
       <h1>LiveChat</h1>
       <p>Chat with friends in real-time about your favorite tvShows, Movies and books.</p>
     </div>
@@ -31,11 +31,6 @@ h1 {
   font-family: var(--font-family2);
 }
 
-.heading {
-  border: 1px solid #333;
-  padding: 1em;
-  margin-bottom: 1em;
-}
 
 p {
   font-size: var(--font-size-smaller);
@@ -43,5 +38,7 @@ p {
 
 .signup {
   font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>
