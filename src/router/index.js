@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import ProfileVue from "../views/Profile.vue";
 import WelcomeVue from "../views/Welcome.vue";
 
 const router = createRouter({
@@ -8,6 +9,11 @@ const router = createRouter({
       path: "/",
       name: "welcome",
       component: WelcomeVue,
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: ProfileVue,
     },
   ],
 });
