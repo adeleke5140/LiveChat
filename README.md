@@ -1,6 +1,6 @@
 # Livechat
 
-Ever wanted to communicate with friends in real-time about movies or tvshows you are watching, LiveChat is that platform
+Ever wanted to communicate with friends in real-time about movies or tvshows you are watching, LiveChat is that platform 🎉
 
 
 ## Project Setup
