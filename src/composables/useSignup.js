@@ -23,6 +23,7 @@ const signUp = async (email, password) => {
   } catch (err) {
     isPending.value = false;
     error.value = err.message;
+    setTimeout(() => (error.value = null), 5000);
     console.error(err.message);
   }
 };
