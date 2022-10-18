@@ -1,0 +1,61 @@
+@import "./base.css";
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+h3 {
+    font-family: var(--font-family2);
+    font-weight: bold;
+}
+
+button{
+  border: none;
+  font-family: var(--font-family1);
+  border: 1px solid #333;
+  padding: .4em 1.5em;
+  background-color: #fbfafa;
+  box-shadow: 2px 2px 0px #333;
+  cursor: pointer;
+  width:100%;
+  margin-top: 1em;
+}
+
+button:active{
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+button:focus{
+  outline: 1px solid #333;
+}
+
+button:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+form{
+  margin: 20px auto;
+  border: 1px solid #333;
+  padding: 1em;
+}
+
+form label{
+  display: block;
+  margin:20px 0 10px;
+  font-size: var(--font-size-smaller);
+}
+
+form input{
+  border:none;
+  border: 1px solid #eee;
+  padding: 5px;
+  width: 100%;
+  font-family: var(--font-family1);
+}
+input:focus{
+  outline: 1px solid #333
+}
