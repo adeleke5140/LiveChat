@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
+import { onMounted, ref } from 'vue';
+import { auth } from '../firebase/config'
 
 const displayName = ref('')
 const password = ref('')
@@ -23,6 +23,10 @@ const password = ref('')
 const handleSubmit = () => {
     console.log(displayName.value)
 }
+
+onMounted(() => {
+    console.log(auth.currentUser.displayName, auth.currentUser)
+})
 </script>
 
 <style scoped>
