@@ -1,8 +1,6 @@
 import { ref } from "vue";
-import { ref } from "vue";
-
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const error = ref(null);
 const isPending = ref(false);
@@ -12,16 +10,17 @@ const login = async (email, password) => {
   error.value = null;
 
   try {
-    const res = signInWithEmailAndPassword(auth, email, password);
+    const res = await signInWithEmailAndPassword(auth, email, password);
     if (!res) {
-      throw new Error("Incorrect login credentials");
+      throw new Error("Could not Login");
     }
     isPending.value = false;
     error.value = null;
+    return res;
   } catch (err) {
-    console.log(err.message);
-    err.value = err.message;
+    error.value = err.message;
     isPending.value = false;
+    setTimeout(() => (error.value = null), 5000);
   }
 };
 
