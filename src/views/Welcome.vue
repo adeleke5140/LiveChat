@@ -2,8 +2,13 @@
 import SignupForm from '../components/SignupForm.vue';
 import LoginForm from '../components/LoginForm.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const showLogin = ref(true)
+const router = useRouter()
+const enterChat = () => {
+  router.push({ name: 'chatroom' })
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const showLogin = ref(true)
     </div>
 
     <div v-if="showLogin">
-      <LoginForm />
+      <LoginForm @login="enterChat" />
       <p>No account yet? <span class="signup" @click="showLogin = false">Signup</span> instead.</p>
     </div>
     <div v-else>
