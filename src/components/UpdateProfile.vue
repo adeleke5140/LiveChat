@@ -20,6 +20,7 @@ import Button from './Button.vue';
 import delay from '../composables/delay';
 
 
+
 const router = useRouter()
 const username = ref('')
 
@@ -37,7 +38,7 @@ const updateUsername = async () => {
         displayName: username.value
     })
     delay(3000).then(() => isPending.value = false)
-    router.push({ name: "chatroom " })
+    router.push({ name: "chatroom" })
 }
 
 
