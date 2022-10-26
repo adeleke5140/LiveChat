@@ -1,21 +1,29 @@
-import { db } from "../firebase/config";
-import { ref } from "vue";
+import { db } from "../firebase/config"
+import { ref } from "vue"
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore"
 
-const getCollection = async (col) => {
-  const error = ref(null);
-  const colRef = collection(db, col);
+const getCollection = () => {
+  const error = ref(null)
+  const isLoading = ref(null)
 
-  try {
-    const results = await getDocs(colRef);
-    results.forEach((doc) => {
-      console.log(doc.id, "=>", doc.data());
-    });
-  } catch (err) {
-    console.log(err);
-    error.value = err;
+  const getDocument = async (col) => {
+    error.value = null
+    isLoading.value = true
+    const colRef = collection(db, col)
+
+    try {
+      const results = await getDocs(colRef)
+      isLoading.value = false
+      return results
+    } catch (err) {
+      console.log(err)
+      error.value = err
+      isLoading.value = false
+    }
   }
-};
 
-export default getCollection;
+  return { error, isLoading, getDocument }
+}
+
+export default getCollection
