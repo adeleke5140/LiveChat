@@ -1,7 +1,7 @@
 <template>
     <form>
-        <textarea class="text-area" name="chat" id="chat" v-model="message"
-            @keypress.enter.prevent="handleSubmit"></textarea>
+        <textarea class="text-area" name="chat" id="chat" v-model="message" @keypress.enter.prevent="handleSubmit"
+            placeholder="Share your thought..."></textarea>
     </form>
     <ErrorComponent :error="error" />
     <SuccessComponent :success="success" />
@@ -51,10 +51,10 @@ textarea {
     font-family: inherit;
     width: 100%;
     max-width: 100%;
-    height: 150px;
+    height: 2.5em;
     border: 1px solid #333;
     resize: none;
-    padding: 10px;
+    padding: .5em;
 }
 
 
