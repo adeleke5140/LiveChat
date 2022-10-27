@@ -1,21 +1,37 @@
 import { db } from "../firebase/config";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
-const getCollection = async (col) => {
+const getCollection = (col) => {
   const error = ref(null);
+  const documents = ref(null);
+
   const colRef = collection(db, col);
 
-  try {
-    const results = await getDocs(colRef);
-    results.forEach((doc) => {
-      console.log(doc.id, "=>", doc.data());
-    });
-  } catch (err) {
-    console.log(err);
-    error.value = err;
-  }
+  const unsub = onSnapshot(
+    colRef,
+    (snapshot) => {
+      let results = [];
+      snapshot.docs.forEach((doc) => {
+        doc.data().createdAt && results.push({ ...doc.data(), id: doc.id });
+      });
+
+      documents.value = results;
+      error.value = null;
+    },
+    (err) => {
+      console.log(err.message);
+      documents.value = null;
+      error.value = "Could not fetch data";
+    }
+  );
+
+  watchEffect((onInvalidate) => {
+    onInvalidate(() => unsub());
+  });
+
+  return { error, documents };
 };
 
 export default getCollection;
