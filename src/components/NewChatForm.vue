@@ -31,10 +31,11 @@ const handleSubmit = async () => {
             createdAt: timestamp
         }
         await addDocument(chat)
+        message.value = ''
         if (!error.value) {
             success.value = true
             delay(1000).then(() => success.value = false)
-            message.value = ''
+
         }
     }
 }
