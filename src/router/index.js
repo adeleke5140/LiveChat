@@ -2,16 +2,27 @@ import { createRouter, createWebHistory } from "vue-router";
 import ChatRoomVue from "../views/ChatRoom.vue";
 import ProfileVue from "../views/Profile.vue";
 import WelcomeVue from "../views/Welcome.vue";
-
-//add route guard
+import HomeVue from "../views/Home.vue";
 
 import { auth } from "../firebase/config";
 
+//add route guard
 const requireAuth = (to, from, next) => {
   let user = auth.currentUser;
   if (!user) {
     next({
       name: "welcome",
+    });
+  } else {
+    next();
+  }
+};
+
+const requireNoAuth = (to, from, next) => {
+  let user = auth.currentUser;
+  if (user) {
+    next({
+      name: "home",
     });
   } else {
     next();
@@ -25,6 +36,7 @@ const router = createRouter({
       path: "/",
       name: "welcome",
       component: WelcomeVue,
+      beforeEnter: requireNoAuth,
     },
     {
       path: "/profile",
@@ -36,6 +48,11 @@ const router = createRouter({
       name: "chatroom",
       component: ChatRoomVue,
       beforeEnter: requireAuth,
+    },
+    {
+      path: "/home",
+      name: "home",
+      component: HomeVue,
     },
   ],
 });
