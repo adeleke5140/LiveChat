@@ -3,17 +3,20 @@
         <div v-if="error">
             <ErrorComponent :error="error" />
         </div>
-        <div class="parent">
+        <div class="parent" ref="messages">
             <div v-if="isPending" class="loader">
                 <span class="pending"></span>
                 <span>loading...</span>
             </div>
             <section v-else class="messages">
                 <article v-for="doc in formattedDocuments" :key="doc.id" class="single">
-                    <span class="created-at">{{ doc.createdAt }} ago</span>
-                    <span class="name">{{ doc.name }}: </span>
+                    <span class="row">
+                        <span class="name">{{ doc.name }} </span>
+                        <span class="created-at">{{ doc.createdAt }} ago</span>
+                    </span>
                     <span class="message">{{ doc.message }}</span>
                 </article>
+
             </section>
         </div>
 
@@ -24,10 +27,19 @@
 <script setup>
 import getCollection from '../composables/getCollection';
 import ErrorComponent from './ErrorComponent.vue'
-import { formatDistanceToNow } from 'date-fns  '
+import { formatDistanceToNow } from 'date-fns'
 import { computed } from '@vue/reactivity';
+import { onUpdated, ref } from 'vue'
+import Button from './Button.vue';
+
 
 const { error, documents, isPending } = getCollection('messages')
+
+const messages = ref(null)
+
+onUpdated(() => {
+    messages.value.scrollTop = messages.value.scrollHeight
+})
 
 //computed properties are really cool
 const formattedDocuments = computed(() => {
@@ -96,19 +108,29 @@ article:last-child::after {
 }
 
 
+span.row {
+    display: flex;
+    align-items: center;
+}
+
 .created-at {
     display: block;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .name {
     font-weight: bold;
-    font-size: var(--font-size-smaller)
+    font-size: var(--font-size-smaller);
+    margin-right: .6em;
 }
 
 .message {
     font-size: var(--font-size-smaller);
+    display: block;
+    margin-top: -.2em;
 }
+
+
 
 .pending {
     display: block;

@@ -64,11 +64,15 @@ span {
 
 .welcome {
     font-size: var(--font-size-smaller);
+    padding-left: 1em;
+    padding-right: 1em;
+
 }
 
 .name {
     font-weight: bold;
     font-size: var(--font-size-smaller);
+    padding: 0 1em;
 }
 
 .tg {

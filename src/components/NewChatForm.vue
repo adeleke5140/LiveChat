@@ -55,7 +55,7 @@ textarea {
     height: 2.5em;
     border: 1px solid #333;
     resize: none;
-    padding: .5em;
+    padding: .5em 1em;
 }
 
 
