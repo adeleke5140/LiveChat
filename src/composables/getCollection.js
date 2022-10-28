@@ -1,16 +1,19 @@
 import { db } from "../firebase/config";
 import { ref, watchEffect } from "vue";
 
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 
 const getCollection = (col) => {
   const error = ref(null);
   const documents = ref(null);
+  const isPending = ref(true);
 
   const colRef = collection(db, col);
 
+  const q = query(colRef, orderBy("createdAt"));
+
   const unsub = onSnapshot(
-    colRef,
+    q,
     (snapshot) => {
       let results = [];
       snapshot.docs.forEach((doc) => {
@@ -18,10 +21,12 @@ const getCollection = (col) => {
       });
 
       documents.value = results;
+      isPending.value = false;
       error.value = null;
     },
     (err) => {
       console.log(err.message);
+      isPending.value = false;
       documents.value = null;
       error.value = "Could not fetch data";
     }
@@ -31,7 +36,7 @@ const getCollection = (col) => {
     onInvalidate(() => unsub());
   });
 
-  return { error, documents };
+  return { error, documents, isPending };
 };
 
 export default getCollection;
