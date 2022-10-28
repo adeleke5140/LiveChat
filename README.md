@@ -37,7 +37,7 @@ To get started on your local machine:
 3. Run `yarn dev` to deploy it on your local environment
 
 ### Current Task List
-- [ ] Add the main chatroom feature
+- [x] Add the main chatroom feature
 - [ ] Add the ability for users to create their own chatrooms
 - [ ] Add filter for Anime, tvshows and Movie content
 - [ ] Add filter bar to search for chatroom
