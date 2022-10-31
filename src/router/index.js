@@ -5,6 +5,7 @@ import WelcomeVue from "../views/Welcome.vue";
 import HomeVue from "../views/Home.vue";
 
 import { auth } from "../firebase/config";
+import Account from "../views/Account.vue";
 
 //add route guard
 const requireAuth = (to, from, next) => {
@@ -53,6 +54,11 @@ const router = createRouter({
       path: "/home",
       name: "home",
       component: HomeVue,
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: Account,
     },
   ],
 });
