@@ -4,7 +4,7 @@
             <tbody>
                 <tr>
                     <th class="tg"><span class="welcome">Hey there...</span></th>
-                    <td class="tg"><span class="name">{{ user.displayName }}</span></td>
+                    <td class="tg" @click="goToAccount"><span class="name">{{ user.displayName }}</span></td>
                 </tr>
             </tbody>
         </table>
@@ -35,6 +35,10 @@ const handleLogout = () => {
         console.log('user logged out')
     }
 
+}
+
+const goToAccount = () => {
+    router.push({ name: 'account' })
 }
 </script>
 
