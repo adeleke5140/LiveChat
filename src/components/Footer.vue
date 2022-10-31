@@ -21,4 +21,14 @@ a {
 	color: var(--link-color);
 	text-decoration: none;
 }
+
+@media(min-width: 40em) {
+	footer {
+		bottom: 0;
+		/* top: 0; */
+		margin-right: -50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
 </style>
