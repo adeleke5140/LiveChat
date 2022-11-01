@@ -3,6 +3,7 @@ import SignupForm from '../components/SignupForm.vue';
 import LoginForm from '../components/LoginForm.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Footer from '../components/Footer.vue';
 
 const showLogin = ref(true)
 const router = useRouter()
@@ -27,6 +28,7 @@ const enterChat = () => {
       <p>Already registered? <span class="signup" @click="showLogin = true">Login</span> instead.</p>
     </div>
   </main>
+  <Footer />
 </template>
 
 
