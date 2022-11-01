@@ -1,18 +1,19 @@
 <template>
     <Transition name="fade">
-        <div v-if="success">
-            <p class="success-message">Message Posted!</p>
+        <div class="success" v-if="success" :style="{ marginTop: marginTop + 'em' }">
+            <p class="success-message">{{ message }}</p>
         </div>
     </Transition>
 </template>
 
 <script setup>
-const props = defineProps(['success'])
+const props = defineProps(['success', 'message', 'marginTop'])
+console.log(props.marginTop)
 </script>
 
 <style scoped>
 div {
-    margin-top: -1em;
+    /* margin-top: em; */
     border: 1px solid #333;
     padding: .5em;
 }
