@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navbar />
-        <h1 class="container heading">Chatroom</h1>
+        <h1 class="container heading">Chatroom.</h1>
         <ChatWindow />
         <NewChatForm />
     </div>
@@ -17,7 +17,7 @@ import NewChatForm from '../components/NewChatForm.vue';
 
 <style  scoped>
 .heading {
-    padding: .3em .6em;
+    padding: .6em .5em;
     font-weight: bold;
 }
 </style>
