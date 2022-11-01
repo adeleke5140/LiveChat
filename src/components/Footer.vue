@@ -10,11 +10,12 @@
 
 </script>
 
-<style  scoped>
+<style >
 footer {
 	position: absolute;
 	bottom: 0;
-	font-size: var(--font-size-smaller);
+
+	font-size: 10px;
 }
 
 a {
@@ -24,6 +25,7 @@ a {
 
 @media(min-width: 40em) {
 	footer {
+		font-size: var(--font-size-smaller);
 		bottom: 0;
 		/* top: 0; */
 		margin-right: -50%;
