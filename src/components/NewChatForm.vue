@@ -4,7 +4,7 @@
             placeholder="Share your thought..."></textarea>
     </form>
     <ErrorComponent :error="error" />
-    <SuccessComponent :success="success" />
+    <SuccessComponent :success="success" message="Message Posted!" marginTop="-1" />
 </template>
 
 <script setup>
