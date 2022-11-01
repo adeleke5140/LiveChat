@@ -90,4 +90,9 @@ span {
     height: 28px;
     white-space: nowrap
 }
+
+.tg:last-child:hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
+}
 </style>
