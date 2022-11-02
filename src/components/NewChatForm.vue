@@ -1,7 +1,7 @@
 <template>
     <form>
         <textarea class="text-area" name="chat" id="chat" v-model="message" @keypress.enter.prevent="handleSubmit"
-            placeholder="Share your thought..."></textarea>
+            placeholder="Share your thought..." :disabled="disabled"></textarea>
     </form>
     <ErrorComponent :error="error" />
     <SuccessComponent :success="success" message="Message Posted!" marginTop="-1" />
@@ -21,9 +21,12 @@ const { user } = getUser()
 const { addDocument, error } = useCollection('messages')
 
 const success = ref(false)
+
+const disabled = ref(false)
 //all we are doing is saving all of the chats
 //in a firestore database
 const handleSubmit = async () => {
+    disabled.value = true
     if (user) {
         const chat = {
             message: message.value,
@@ -31,6 +34,7 @@ const handleSubmit = async () => {
             createdAt: timestamp
         }
         await addDocument(chat)
+        disabled.value = false
         message.value = ''
         if (!error.value) {
             success.value = true
