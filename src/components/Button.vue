@@ -10,6 +10,10 @@ const props = defineProps(['isPending', 'text'])
 </script>
 
 <style scoped>
+button {
+    color: #333;
+}
+
 .pending {
     display: block;
     width: 20px;
