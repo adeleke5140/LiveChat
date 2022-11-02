@@ -2,6 +2,8 @@
 
 Ever wanted to communicate with friends in real-time about movies or tvshows you are watching, LiveChat is that platform 🎉
 
+Deployed live [here](https://livechat-98e8c.web.app/)
+
 ## Why I decided to build LiveChat
 I got tired of building generic projects and wanted to explore building something I would actually use.
 After tinkering with VueJS on small side projects, I decided to use it in this massive one. I hope my friends can enjoy using it
