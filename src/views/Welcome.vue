@@ -25,7 +25,7 @@ const enterChat = () => {
     </div>
     <div v-else>
       <SignupForm />
-      <p>Already registered? <span class="signup" @click="showLogin = true">Login</span> instead.</p>
+      <p>Already registered? <span class="login" @click="showLogin = true">Login</span> instead.</p>
     </div>
   </main>
   <Footer />
@@ -43,9 +43,11 @@ p {
   font-size: var(--font-size-smaller);
 }
 
-.signup {
+.signup,
+.login {
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
+  color: var(--link-color)
 }
 </style>
