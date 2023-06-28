@@ -26,3 +26,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+.firebase/
+.firebaserc
+firebase.json
+firestore.rules
